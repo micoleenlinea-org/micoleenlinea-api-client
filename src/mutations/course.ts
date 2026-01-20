@@ -100,8 +100,8 @@ export const useCreateCourse = () => {
 
 // ==================== UPDATE COURSE ====================
 
-// Tipo local extendido con id para el payload de mutation
-interface UpdateCourseMutationPayload extends UpdateCoursePayload {
+// Tipo extendido con id para el payload de mutation
+export interface UpdateCourseMutationPayload extends UpdateCoursePayload {
   id: number;
 }
 
