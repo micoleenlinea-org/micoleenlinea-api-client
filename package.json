@@ -1,6 +1,6 @@
 {
   "name": "@micoleenlinea-org/api-client",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "API client compartido para MiColeEnLinea (web y mobile)",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -35,6 +35,15 @@
       "types": "./dist/utils/index.d.ts",
       "import": "./dist/utils/index.mjs",
       "require": "./dist/utils/index.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "types": ["./dist/types/index.d.ts"],
+      "mutations": ["./dist/mutations/index.d.ts"],
+      "queries": ["./dist/queries/index.d.ts"],
+      "config": ["./dist/config/index.d.ts"],
+      "utils": ["./dist/utils/index.d.ts"]
     }
   },
   "files": [
