@@ -1,0 +1,10 @@
+# Source files (dist is included)
+src/
+tsconfig.json
+tsup.config.ts
+
+# Dev files
+.gitignore
+.github/
+*.md
+!README.md
