@@ -1,0 +1,78 @@
+name: Update Dependent Repos
+
+# Se ejecuta cuando se crea un tag (después de publish)
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  update-web:
+    name: Update micoleenlinea-web
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout web repo
+        uses: actions/checkout@v4
+        with:
+          repository: micoleenlinea-org/micoleenlinea-web
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          ref: qa
+
+      - name: Update api-client version
+        run: |
+          TAG="${{ github.ref_name }}"
+          echo "Updating api-client to $TAG"
+          sed -i "s|micoleenlinea-api-client.git#v[0-9.]*|micoleenlinea-api-client.git#$TAG|g" package.json
+          cat package.json | grep api-client
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          commit-message: "chore: update api-client to ${{ github.ref_name }}"
+          title: "chore: update api-client to ${{ github.ref_name }}"
+          body: |
+            Actualización automática de `@micoleenlinea-org/api-client` a `${{ github.ref_name }}`.
+
+            Este PR fue creado automáticamente por el workflow de api-client.
+
+            **Checklist:**
+            - [ ] Verificar que el build pase
+            - [ ] Probar localmente si hay cambios breaking
+          branch: deps/api-client-${{ github.ref_name }}
+          base: qa
+
+  update-mobile:
+    name: Update micoleenlinea-mobile
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout mobile repo
+        uses: actions/checkout@v4
+        with:
+          repository: micoleenlinea-org/micoleenlinea-mobile
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          ref: main
+
+      - name: Update api-client version
+        run: |
+          TAG="${{ github.ref_name }}"
+          echo "Updating api-client to $TAG"
+          sed -i "s|micoleenlinea-api-client.git#v[0-9.]*|micoleenlinea-api-client.git#$TAG|g" package.json
+          cat package.json | grep api-client
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          commit-message: "chore: update api-client to ${{ github.ref_name }}"
+          title: "chore: update api-client to ${{ github.ref_name }}"
+          body: |
+            Actualización automática de `@micoleenlinea-org/api-client` a `${{ github.ref_name }}`.
+
+            Este PR fue creado automáticamente por el workflow de api-client.
+
+            **Checklist:**
+            - [ ] Verificar que el build pase
+            - [ ] Probar localmente si hay cambios breaking
+          branch: deps/api-client-${{ github.ref_name }}
+          base: main
