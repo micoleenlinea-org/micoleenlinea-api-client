@@ -1,4 +1,4 @@
-import { U as UserAPIResponse } from './student-CjivjBP1.js';
+import { U as UserAPIResponse } from './student-0JXHrjgs.js';
 
 declare enum NotificationType {
     CONTACT = "contact",

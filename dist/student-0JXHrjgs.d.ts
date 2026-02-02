@@ -16,6 +16,7 @@ interface UserAPIResponse {
     email_verified_at: string | null;
     role: 'superadmin' | 'admin' | 'staff' | 'contact';
     school_id: number | null;
+    school_email?: string | null;
     is_active: boolean;
     phone: string | null;
     invite_status?: InviteStatus;

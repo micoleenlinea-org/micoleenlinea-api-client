@@ -78,7 +78,7 @@ const createStudentWithContactAPIMock = async (
 
 const updateStudentAPIMock = async (id: number, course_id: number, phone: string) => {
   await new Promise((resolve) => setTimeout(resolve, 500));
-  
+
   const students = getMockStudentsFromStorage();
   const student = students.find(s => s.id === id);
   if (student) {
@@ -87,6 +87,15 @@ const updateStudentAPIMock = async (id: number, course_id: number, phone: string
     saveMockStudentsToStorage(students);
   }
   console.log(`🧪 Mock: Estudiante ${id} actualizado con curso ${course_id}`);
+};
+
+const deleteStudentAPIMock = async (id: number): Promise<void> => {
+  await new Promise((resolve) => setTimeout(resolve, 500));
+
+  const students = getMockStudentsFromStorage();
+  const filtered = students.filter(s => s.id !== id);
+  saveMockStudentsToStorage(filtered);
+  console.log(`🧪 Mock: Estudiante ${id} eliminado`);
 };
 
 const importCsvAPIMock = async (data: ImportCsvRequest): Promise<ImportCsvResponse> => {
@@ -128,6 +137,11 @@ const createStudentWithContactAPI = async (
 const updateStudentAPI = async (id: number, course_id: number, phone: string) => {
   if (MOCK_MODE) return updateStudentAPIMock(id, course_id, phone);
   await apiClient.patch(`/students/${id}`, { course_id, phone });
+};
+
+const deleteStudentAPI = async (id: number): Promise<void> => {
+  if (MOCK_MODE) return deleteStudentAPIMock(id);
+  await apiClient.delete(`/students/${id}`);
 };
 
 const importCsvAPI = async (data: ImportCsvRequest): Promise<ImportCsvResponse> => {
@@ -176,6 +190,16 @@ export const useUpdateStudent = () => {
     onSuccess: () => {},
     onError: (error) => {
       console.error('Error en actualizar estudiante:', error);
+    },
+  });
+};
+
+export const useDeleteStudent = () => {
+  return useMutation<void, ApiError, number>({
+    mutationFn: deleteStudentAPI,
+    onSuccess: () => {},
+    onError: (error) => {
+      console.error('Error en eliminar estudiante:', error);
     },
   });
 };

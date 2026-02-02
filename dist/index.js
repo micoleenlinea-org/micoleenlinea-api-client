@@ -61,6 +61,7 @@ __export(index_exports, {
   useCreateStaff: () => useCreateStaff,
   useCreateStudentWithContact: () => useCreateStudentWithContact,
   useDeleteCourse: () => useDeleteCourse,
+  useDeleteStudent: () => useDeleteStudent,
   useFetchMe: () => useFetchMe,
   useForgotPassword: () => useForgotPassword,
   useGetCoursesQuery: () => useGetCoursesQuery,
@@ -87,6 +88,7 @@ __export(index_exports, {
   useSetSchoolActive: () => useSetSchoolActive,
   useToggleContact: () => useToggleContact,
   useToggleStaff: () => useToggleStaff,
+  useUpdateContact: () => useUpdateContact,
   useUpdateCourse: () => useUpdateCourse,
   useUpdateProfile: () => useUpdateProfile,
   useUpdateStaff: () => useUpdateStaff,
@@ -392,6 +394,25 @@ var createContactAPI = async (contact) => {
     };
   }
 };
+var updateContactAPI = async (params) => {
+  try {
+    await apiClient.patch(
+      `/students/${params.student_id}/contacts/${params.id}`,
+      {
+        first_name: params.first_name,
+        last_name: params.last_name,
+        email: params.email,
+        phone: params.phone || ""
+      }
+    );
+  } catch (err) {
+    const error = err;
+    throw {
+      message: error.response?.data?.message || error.message,
+      errors: error.response?.data?.errors || {}
+    };
+  }
+};
 var useCreateContact = () => {
   return (0, import_react_query3.useMutation)({
     mutationFn: createContactAPI,
@@ -399,6 +420,16 @@ var useCreateContact = () => {
     },
     onError: (error) => {
       console.error("Error en crear contacto:", error);
+    }
+  });
+};
+var useUpdateContact = () => {
+  return (0, import_react_query3.useMutation)({
+    mutationFn: updateContactAPI,
+    onSuccess: () => {
+    },
+    onError: (error) => {
+      console.error("Error en actualizar contacto:", error);
     }
   });
 };
@@ -723,6 +754,13 @@ var updateStudentAPIMock = async (id, course_id, phone) => {
   }
   console.log(`\u{1F9EA} Mock: Estudiante ${id} actualizado con curso ${course_id}`);
 };
+var deleteStudentAPIMock = async (id) => {
+  await new Promise((resolve) => setTimeout(resolve, 500));
+  const students = getMockStudentsFromStorage();
+  const filtered = students.filter((s) => s.id !== id);
+  saveMockStudentsToStorage(filtered);
+  console.log(`\u{1F9EA} Mock: Estudiante ${id} eliminado`);
+};
 var importCsvAPIMock = async (data) => {
   await new Promise((resolve) => setTimeout(resolve, 2e3));
   console.log("\u{1F9EA} Mock: CSV importado:", data.file.name);
@@ -752,6 +790,10 @@ var createStudentWithContactAPI = async (studentData, contactData) => {
 var updateStudentAPI = async (id, course_id, phone) => {
   if (MOCK_MODE) return updateStudentAPIMock(id, course_id, phone);
   await apiClient.patch(`/students/${id}`, { course_id, phone });
+};
+var deleteStudentAPI = async (id) => {
+  if (MOCK_MODE) return deleteStudentAPIMock(id);
+  await apiClient.delete(`/students/${id}`);
 };
 var importCsvAPI = async (data) => {
   if (MOCK_MODE) return importCsvAPIMock(data);
@@ -791,6 +833,16 @@ var useUpdateStudent = () => {
     },
     onError: (error) => {
       console.error("Error en actualizar estudiante:", error);
+    }
+  });
+};
+var useDeleteStudent = () => {
+  return (0, import_react_query9.useMutation)({
+    mutationFn: deleteStudentAPI,
+    onSuccess: () => {
+    },
+    onError: (error) => {
+      console.error("Error en eliminar estudiante:", error);
     }
   });
 };
@@ -1311,6 +1363,7 @@ var transformDniToString = (dni) => {
   useCreateStaff,
   useCreateStudentWithContact,
   useDeleteCourse,
+  useDeleteStudent,
   useFetchMe,
   useForgotPassword,
   useGetCoursesQuery,
@@ -1337,6 +1390,7 @@ var transformDniToString = (dni) => {
   useSetSchoolActive,
   useToggleContact,
   useToggleStaff,
+  useUpdateContact,
   useUpdateCourse,
   useUpdateProfile,
   useUpdateStaff,

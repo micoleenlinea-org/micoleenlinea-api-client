@@ -1,4 +1,4 @@
-import { U as UserAPIResponse, P as Province } from './student-CjivjBP1.js';
+import { U as UserAPIResponse, P as Province } from './student-0JXHrjgs.mjs';
 
 interface CreateAdminRequest {
     name: string;
