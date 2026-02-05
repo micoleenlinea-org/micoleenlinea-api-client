@@ -33,6 +33,12 @@ export interface NotificationParams {
   type?: 'institutional' | 'courses' | 'contacts'; // Type filter
 }
 
+export interface NotificationCreatedBy {
+  id: number;
+  name: string;
+  initials: string;
+}
+
 export interface Notification {
   id: number;
   subject: string;
@@ -44,6 +50,8 @@ export interface Notification {
   createdAt: string; // ISO 8601 date string
   timeAgo: string;
   status: 'sent' | 'draft' | 'scheduled';
+  channel?: 'push' | 'push_email';
+  createdBy?: NotificationCreatedBy | null;
 }
 
 export interface NotificationResponse {
@@ -165,4 +173,13 @@ export interface MobileNotificationsResponse {
   per_page: number;
   current_page: number;
   last_page: number;
+}
+
+export interface ResendResponse {
+  message: string;
+  resent_count: number;
+  delivery?: {
+    emails_queued: number;
+    push_queued: number;
+  };
 }

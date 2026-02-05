@@ -1,6 +1,6 @@
 import * as _tanstack_react_query from '@tanstack/react-query';
-import { a as CreateAdminResponse, C as CreateAdminRequest, U as UpdateProfileRequest, j as UpdateProfileResponse, k as CreateSchoolResponse, S as SchoolRequest, l as SchoolResponse, b as ImportCsvResponse, I as ImportCsvRequest, f as ImportPreviewResponse, e as ImportPreviewRequest, i as ImportConfirmResponse, g as ImportConfirmRequest } from '../school-axeqX9Jc.mjs';
-import { A as ApiError, L as LoginRequest, a as LoginResponse, V as ValidateTokenRequest, b as ValidateTokenResponse, R as ResetPasswordRequest, c as ResetPasswordResponse, U as UserAPIResponse, H as HttpIndividualContact, d as UpdateCoursePayload, D as DeleteCourseResponse, j as HttpIndividualStaffMember, n as HttpIndividualStudent } from '../student-0JXHrjgs.mjs';
+import { a as CreateAdminResponse, C as CreateAdminRequest, U as UpdateProfileRequest, j as UpdateProfileResponse, k as CreateSchoolResponse, S as SchoolRequest, l as SchoolResponse, b as ImportCsvResponse, I as ImportCsvRequest, f as ImportPreviewResponse, e as ImportPreviewRequest, i as ImportConfirmResponse, g as ImportConfirmRequest } from '../school-DdG8-woW.mjs';
+import { A as ApiError, L as LoginRequest, a as LoginResponse, V as ValidateTokenRequest, b as ValidateTokenResponse, R as ResetPasswordRequest, c as ResetPasswordResponse, U as UserAPIResponse, H as HttpIndividualContact, d as UpdateCoursePayload, D as DeleteCourseResponse, E as ResendResponse, Q as HttpIndividualStaffMember, Y as HttpIndividualStudent } from '../student-DL6ZG-gU.mjs';
 
 declare const resendAdminInviteAPI: (email: string) => Promise<{
     message: string;
@@ -63,6 +63,7 @@ declare const useUpdateCourse: () => _tanstack_react_query.UseMutationResult<Cou
 declare const useDeleteCourse: () => _tanstack_react_query.UseMutationResult<DeleteCourseResponse, ApiError, number, unknown>;
 
 declare const useCreateNotification: () => _tanstack_react_query.UseMutationResult<void, ApiError, FormData, unknown>;
+declare const useResendToPending: () => _tanstack_react_query.UseMutationResult<ResendResponse, ApiError, number, unknown>;
 
 /**
  * Update user profile information
@@ -124,4 +125,4 @@ declare const useImportPreview: () => _tanstack_react_query.UseMutationResult<Im
  */
 declare const useImportConfirm: () => _tanstack_react_query.UseMutationResult<ImportConfirmResponse, ApiError, ImportConfirmRequest, unknown>;
 
-export { type CourseResponse, type CreateCoursePayload, DeleteCourseResponse, type UpdateCourseMutationPayload, UpdateCoursePayload, completeSignupAPI, fetchMeAPI, forgotPasswordAPI, getMockCoursesStorage, getMockStudentsStorage, loginAPI, resendAdminInviteAPI, resetPasswordAPI, updateProfileAPI, useCompleteSignup, useCreateAdmin, useCreateContact, useCreateCourse, useCreateNotification, useCreateSchool, useCreateStaff, useCreateStudentWithContact, useDeleteCourse, useDeleteStudent, useFetchMe, useForgotPassword, useGetSchoolById, useImportConfirm, useImportCsv, useImportPreview, useLogin, useResendAdminInvite, useResetPassword, useSetSchoolActive, useToggleContact, useToggleStaff, useUpdateContact, useUpdateCourse, useUpdateProfile, useUpdateStaff, useUpdateStudent, useValidateResetToken, useValidateSignupToken, validateResetTokenAPI, validateSignupTokenAPI };
+export { type CourseResponse, type CreateCoursePayload, DeleteCourseResponse, type UpdateCourseMutationPayload, UpdateCoursePayload, completeSignupAPI, fetchMeAPI, forgotPasswordAPI, getMockCoursesStorage, getMockStudentsStorage, loginAPI, resendAdminInviteAPI, resetPasswordAPI, updateProfileAPI, useCompleteSignup, useCreateAdmin, useCreateContact, useCreateCourse, useCreateNotification, useCreateSchool, useCreateStaff, useCreateStudentWithContact, useDeleteCourse, useDeleteStudent, useFetchMe, useForgotPassword, useGetSchoolById, useImportConfirm, useImportCsv, useImportPreview, useLogin, useResendAdminInvite, useResendToPending, useResetPassword, useSetSchoolActive, useToggleContact, useToggleStaff, useUpdateContact, useUpdateCourse, useUpdateProfile, useUpdateStaff, useUpdateStudent, useValidateResetToken, useValidateSignupToken, validateResetTokenAPI, validateSignupTokenAPI };

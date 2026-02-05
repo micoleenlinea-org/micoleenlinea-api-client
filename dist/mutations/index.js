@@ -57,6 +57,7 @@ __export(mutations_exports, {
   useImportPreview: () => useImportPreview,
   useLogin: () => useLogin,
   useResendAdminInvite: () => useResendAdminInvite,
+  useResendToPending: () => useResendToPending,
   useResetPassword: () => useResetPassword,
   useSetSchoolActive: () => useSetSchoolActive,
   useToggleContact: () => useToggleContact,
@@ -542,6 +543,27 @@ var useCreateNotification = () => {
     }
   });
 };
+var resendToPendingApi = async (notificationId) => {
+  try {
+    const { data } = await apiClient.post(`/notifications/${notificationId}/resend-pending`);
+    return data;
+  } catch (err) {
+    const error = err;
+    throw {
+      message: error.response?.data?.message || error.message,
+      errors: error.response?.data?.errors || {}
+    };
+  }
+};
+var useResendToPending = () => {
+  const queryClient = (0, import_react_query5.useQueryClient)();
+  return (0, import_react_query5.useMutation)({
+    mutationFn: resendToPendingApi,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["notifications"] });
+    }
+  });
+};
 
 // src/mutations/profile.ts
 var import_react_query6 = require("@tanstack/react-query");
@@ -950,6 +972,7 @@ var useImportConfirm = () => {
   useImportPreview,
   useLogin,
   useResendAdminInvite,
+  useResendToPending,
   useResetPassword,
   useSetSchoolActive,
   useToggleContact,

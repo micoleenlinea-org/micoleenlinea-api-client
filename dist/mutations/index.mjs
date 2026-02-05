@@ -443,7 +443,7 @@ var useDeleteCourse = () => {
 };
 
 // src/mutations/notification.ts
-import { useMutation as useMutation5 } from "@tanstack/react-query";
+import { useMutation as useMutation5, useQueryClient } from "@tanstack/react-query";
 var createNotificationApi = async (notificationData) => {
   try {
     const { data } = await apiClient.post("/notifications", notificationData);
@@ -463,6 +463,27 @@ var useCreateNotification = () => {
     },
     onError: (error) => {
       console.error("Error creating notification:", error);
+    }
+  });
+};
+var resendToPendingApi = async (notificationId) => {
+  try {
+    const { data } = await apiClient.post(`/notifications/${notificationId}/resend-pending`);
+    return data;
+  } catch (err) {
+    const error = err;
+    throw {
+      message: error.response?.data?.message || error.message,
+      errors: error.response?.data?.errors || {}
+    };
+  }
+};
+var useResendToPending = () => {
+  const queryClient = useQueryClient();
+  return useMutation5({
+    mutationFn: resendToPendingApi,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["notifications"] });
     }
   });
 };
@@ -873,6 +894,7 @@ export {
   useImportPreview,
   useLogin,
   useResendAdminInvite,
+  useResendToPending,
   useResetPassword,
   useSetSchoolActive,
   useToggleContact,
