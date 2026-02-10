@@ -66,6 +66,7 @@ __export(index_exports, {
   useForgotPassword: () => useForgotPassword,
   useGetCoursesQuery: () => useGetCoursesQuery,
   useGetCoursesWithContactsQuery: () => useGetCoursesWithContactsQuery,
+  useGetDashboardSchoolsQuery: () => useGetDashboardSchoolsQuery,
   useGetNotificationByIdQuery: () => useGetNotificationByIdQuery,
   useGetNotificationsFromSchoolInfiniteQuery: () => useGetNotificationsFromSchoolInfiniteQuery,
   useGetNotificationsFromSchoolQuery: () => useGetNotificationsFromSchoolQuery,
@@ -79,6 +80,7 @@ __export(index_exports, {
   useGetStudentContacts: () => useGetStudentContacts,
   useGetStudents: () => useGetStudents,
   useGetStudentsWithContactsQuery: () => useGetStudentsWithContactsQuery,
+  useGetSuperAdminMetricsQuery: () => useGetSuperAdminMetricsQuery,
   useImportConfirm: () => useImportConfirm,
   useImportCsv: () => useImportCsv,
   useImportPreview: () => useImportPreview,
@@ -1306,6 +1308,34 @@ var useGetSchoolsQuery = (page, perPage) => {
     placeholderData: (prev) => prev
   });
 };
+var getSuperAdminMetrics = async () => {
+  const { data } = await apiClient.get("/schools/superadmin-metrics");
+  return data;
+};
+var useGetSuperAdminMetricsQuery = () => {
+  return (0, import_react_query15.useQuery)({
+    queryKey: ["superadmin", "metrics"],
+    queryFn: getSuperAdminMetrics
+  });
+};
+var getDashboardSchools = async (params) => {
+  const { data } = await apiClient.get("/schools/dashboard", {
+    params: {
+      page: params.page,
+      per_page: params.perPage,
+      search: params.search || void 0,
+      is_active: params.isActive
+    }
+  });
+  return data;
+};
+var useGetDashboardSchoolsQuery = (params) => {
+  return (0, import_react_query15.useQuery)({
+    queryKey: ["superadmin", "dashboard-schools", params],
+    queryFn: () => getDashboardSchools(params),
+    placeholderData: (prev) => prev
+  });
+};
 
 // src/utils/errorLogger.ts
 var isDevelopment = () => {
@@ -1390,6 +1420,7 @@ var transformDniToString = (dni) => {
   useForgotPassword,
   useGetCoursesQuery,
   useGetCoursesWithContactsQuery,
+  useGetDashboardSchoolsQuery,
   useGetNotificationByIdQuery,
   useGetNotificationsFromSchoolInfiniteQuery,
   useGetNotificationsFromSchoolQuery,
@@ -1403,6 +1434,7 @@ var transformDniToString = (dni) => {
   useGetStudentContacts,
   useGetStudents,
   useGetStudentsWithContactsQuery,
+  useGetSuperAdminMetricsQuery,
   useImportConfirm,
   useImportCsv,
   useImportPreview,

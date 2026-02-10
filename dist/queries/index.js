@@ -32,6 +32,7 @@ var queries_exports = {};
 __export(queries_exports, {
   useGetCoursesQuery: () => useGetCoursesQuery,
   useGetCoursesWithContactsQuery: () => useGetCoursesWithContactsQuery,
+  useGetDashboardSchoolsQuery: () => useGetDashboardSchoolsQuery,
   useGetNotificationByIdQuery: () => useGetNotificationByIdQuery,
   useGetNotificationsFromSchoolInfiniteQuery: () => useGetNotificationsFromSchoolInfiniteQuery,
   useGetNotificationsFromSchoolQuery: () => useGetNotificationsFromSchoolQuery,
@@ -43,7 +44,8 @@ __export(queries_exports, {
   useGetStudentById: () => useGetStudentById,
   useGetStudentContacts: () => useGetStudentContacts,
   useGetStudents: () => useGetStudents,
-  useGetStudentsWithContactsQuery: () => useGetStudentsWithContactsQuery
+  useGetStudentsWithContactsQuery: () => useGetStudentsWithContactsQuery,
+  useGetSuperAdminMetricsQuery: () => useGetSuperAdminMetricsQuery
 });
 module.exports = __toCommonJS(queries_exports);
 
@@ -469,10 +471,39 @@ var useGetSchoolsQuery = (page, perPage) => {
     placeholderData: (prev) => prev
   });
 };
+var getSuperAdminMetrics = async () => {
+  const { data } = await apiClient.get("/schools/superadmin-metrics");
+  return data;
+};
+var useGetSuperAdminMetricsQuery = () => {
+  return (0, import_react_query8.useQuery)({
+    queryKey: ["superadmin", "metrics"],
+    queryFn: getSuperAdminMetrics
+  });
+};
+var getDashboardSchools = async (params) => {
+  const { data } = await apiClient.get("/schools/dashboard", {
+    params: {
+      page: params.page,
+      per_page: params.perPage,
+      search: params.search || void 0,
+      is_active: params.isActive
+    }
+  });
+  return data;
+};
+var useGetDashboardSchoolsQuery = (params) => {
+  return (0, import_react_query8.useQuery)({
+    queryKey: ["superadmin", "dashboard-schools", params],
+    queryFn: () => getDashboardSchools(params),
+    placeholderData: (prev) => prev
+  });
+};
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   useGetCoursesQuery,
   useGetCoursesWithContactsQuery,
+  useGetDashboardSchoolsQuery,
   useGetNotificationByIdQuery,
   useGetNotificationsFromSchoolInfiniteQuery,
   useGetNotificationsFromSchoolQuery,
@@ -484,6 +515,7 @@ var useGetSchoolsQuery = (page, perPage) => {
   useGetStudentById,
   useGetStudentContacts,
   useGetStudents,
-  useGetStudentsWithContactsQuery
+  useGetStudentsWithContactsQuery,
+  useGetSuperAdminMetricsQuery
 });
 //# sourceMappingURL=index.js.map

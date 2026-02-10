@@ -1202,6 +1202,34 @@ var useGetSchoolsQuery = (page, perPage) => {
     placeholderData: (prev) => prev
   });
 };
+var getSuperAdminMetrics = async () => {
+  const { data } = await apiClient.get("/schools/superadmin-metrics");
+  return data;
+};
+var useGetSuperAdminMetricsQuery = () => {
+  return useQuery7({
+    queryKey: ["superadmin", "metrics"],
+    queryFn: getSuperAdminMetrics
+  });
+};
+var getDashboardSchools = async (params) => {
+  const { data } = await apiClient.get("/schools/dashboard", {
+    params: {
+      page: params.page,
+      per_page: params.perPage,
+      search: params.search || void 0,
+      is_active: params.isActive
+    }
+  });
+  return data;
+};
+var useGetDashboardSchoolsQuery = (params) => {
+  return useQuery7({
+    queryKey: ["superadmin", "dashboard-schools", params],
+    queryFn: () => getDashboardSchools(params),
+    placeholderData: (prev) => prev
+  });
+};
 
 // src/utils/errorLogger.ts
 var isDevelopment = () => {
@@ -1285,6 +1313,7 @@ export {
   useForgotPassword,
   useGetCoursesQuery,
   useGetCoursesWithContactsQuery,
+  useGetDashboardSchoolsQuery,
   useGetNotificationByIdQuery,
   useGetNotificationsFromSchoolInfiniteQuery,
   useGetNotificationsFromSchoolQuery,
@@ -1298,6 +1327,7 @@ export {
   useGetStudentContacts,
   useGetStudents,
   useGetStudentsWithContactsQuery,
+  useGetSuperAdminMetricsQuery,
   useImportConfirm,
   useImportCsv,
   useImportPreview,
