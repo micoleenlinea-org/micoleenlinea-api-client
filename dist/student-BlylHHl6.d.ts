@@ -275,7 +275,7 @@ interface StaffQueryParams {
 }
 interface HttpIndividualStaffMember {
     name: string;
-    dni: number;
+    dni?: number;
     phone?: string;
     email: string;
     role: 'admin' | 'staff';

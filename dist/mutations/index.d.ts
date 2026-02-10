@@ -1,6 +1,6 @@
 import * as _tanstack_react_query from '@tanstack/react-query';
-import { a as CreateAdminResponse, C as CreateAdminRequest, U as UpdateProfileRequest, j as UpdateProfileResponse, k as CreateSchoolResponse, S as SchoolRequest, l as SchoolResponse, b as ImportCsvResponse, I as ImportCsvRequest, f as ImportPreviewResponse, e as ImportPreviewRequest, i as ImportConfirmResponse, g as ImportConfirmRequest } from '../school-CTHxeA7n.js';
-import { A as ApiError, L as LoginRequest, a as LoginResponse, V as ValidateTokenRequest, b as ValidateTokenResponse, R as ResetPasswordRequest, c as ResetPasswordResponse, U as UserAPIResponse, H as HttpIndividualContact, d as UpdateCoursePayload, D as DeleteCourseResponse, E as ResendResponse, Q as HttpIndividualStaffMember, Y as HttpIndividualStudent } from '../student-DL6ZG-gU.js';
+import { a as CreateAdminResponse, C as CreateAdminRequest, U as UpdateProfileRequest, j as UpdateProfileResponse, k as CreateSchoolResponse, S as SchoolRequest, l as SchoolResponse, b as ImportCsvResponse, I as ImportCsvRequest, f as ImportPreviewResponse, e as ImportPreviewRequest, i as ImportConfirmResponse, g as ImportConfirmRequest } from '../school-DEvcDx7X.js';
+import { A as ApiError, L as LoginRequest, a as LoginResponse, V as ValidateTokenRequest, b as ValidateTokenResponse, R as ResetPasswordRequest, c as ResetPasswordResponse, U as UserAPIResponse, H as HttpIndividualContact, d as UpdateCoursePayload, D as DeleteCourseResponse, E as ResendResponse, Q as HttpIndividualStaffMember, Y as HttpIndividualStudent } from '../student-BlylHHl6.js';
 
 declare const resendAdminInviteAPI: (email: string) => Promise<{
     message: string;

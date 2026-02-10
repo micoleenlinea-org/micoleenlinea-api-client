@@ -26,7 +26,7 @@ export interface StaffQueryParams {
 
 export interface HttpIndividualStaffMember {
   name: string;
-  dni: number;
+  dni?: number;
   phone?: string;
   email: string;
   role: 'admin' | 'staff';
