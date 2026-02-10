@@ -50,3 +50,48 @@ export interface GetSchoolsResponse {
   to: number;
   total: number;
 }
+
+// --- SuperAdmin Dashboard types (nuevos, no modifican los existentes) ---
+
+export interface SuperAdminAlert {
+  type: 'warning' | 'error' | 'info';
+  message: string;
+  school_id: number;
+}
+
+export interface SuperAdminActivityEvent {
+  type: 'school_created' | 'admin_invited' | 'admin_confirmed';
+  message: string;
+  date: string;
+}
+
+export interface SuperAdminMetricsResponse {
+  total_schools: number;
+  active_schools: number;
+  new_schools_this_month: number;
+  total_students: number;
+  total_notifications_this_month: number;
+  alerts: SuperAdminAlert[];
+  recent_activity: SuperAdminActivityEvent[];
+}
+
+export interface DashboardSchool extends School {
+  students_count: number;
+  notifications_this_month_count: number;
+}
+
+export interface GetDashboardSchoolsResponse {
+  current_page: number;
+  data: DashboardSchool[];
+  first_page_url: string;
+  from: number;
+  last_page: number;
+  last_page_url: string;
+  links: Array<Link>;
+  next_page_url: string | null;
+  path: string;
+  per_page: number;
+  prev_page_url: string | null;
+  to: number;
+  total: number;
+}
