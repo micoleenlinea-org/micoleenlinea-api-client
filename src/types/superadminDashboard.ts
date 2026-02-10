@@ -75,7 +75,9 @@ export interface SuperAdminMetricsResponse {
   recent_activity: SuperAdminActivityEvent[];
 }
 
-export interface DashboardSchool extends School {
+// Admin can be null for schools without an assigned admin
+export interface DashboardSchool extends Omit<School, 'admin'> {
+  admin: School['admin'] | null;
   students_count: number;
   notifications_this_month_count: number;
 }
