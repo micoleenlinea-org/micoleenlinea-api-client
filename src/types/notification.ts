@@ -31,6 +31,7 @@ export interface NotificationParams {
   name?: string; // Student name filter
   course_ids?: number[]; // Array of course IDs
   type?: 'institutional' | 'courses' | 'contacts'; // Type filter
+  created_by?: number; // Filter by sender user ID
 }
 
 export interface NotificationCreatedBy {
