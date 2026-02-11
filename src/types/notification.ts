@@ -9,6 +9,8 @@ export interface NotificationMetricsResponse {
   enrolled_students: number;
   active_contacts: number;
   notifications_today: number;
+  notifications_this_month: number;
+  avg_read_percentage: number;
 }
 
 export interface NotificationStats {

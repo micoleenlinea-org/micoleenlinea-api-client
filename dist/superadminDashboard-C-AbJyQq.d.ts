@@ -1,4 +1,4 @@
-import { W as UserAPIResponse } from './student-CG3uJ6yZ.mjs';
+import { W as UserAPIResponse } from './student-DzKrKYJ-.js';
 
 interface School {
     id: number;
