@@ -1,4 +1,4 @@
-import { U as UserAPIResponse } from './student-BlylHHl6.js';
+import { W as UserAPIResponse } from './student-CG3uJ6yZ.mjs';
 
 interface School {
     id: number;
@@ -75,4 +75,4 @@ interface GetDashboardSchoolsResponse {
     total: number;
 }
 
-export type { DashboardSchool as D, GetSchoolsResponse as G, School as S, SuperAdminAlert as a, SuperAdminActivityEvent as b, SuperAdminMetricsResponse as c, GetDashboardSchoolsResponse as d };
+export type { DashboardSchool as D, GetDashboardSchoolsResponse as G, School as S, GetSchoolsResponse as a, SuperAdminActivityEvent as b, SuperAdminAlert as c, SuperAdminMetricsResponse as d };

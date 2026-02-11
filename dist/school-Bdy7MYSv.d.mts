@@ -1,4 +1,4 @@
-import { U as UserAPIResponse, P as Province } from './student-BlylHHl6.js';
+import { W as UserAPIResponse, P as Province } from './student-CG3uJ6yZ.mjs';
 
 interface CreateAdminRequest {
     name: string;
@@ -139,4 +139,4 @@ interface SchoolResponse {
     updated_at: string;
 }
 
-export type { CreateAdminRequest as C, ImportCsvRequest as I, SchoolRequest as S, UpdateProfileRequest as U, CreateAdminResponse as a, ImportCsvResponse as b, CsvRowWithStatus as c, ImportPreviewSummary as d, ImportPreviewRequest as e, ImportPreviewResponse as f, ImportConfirmRequest as g, ImportResultSummary as h, ImportConfirmResponse as i, UpdateProfileResponse as j, CreateSchoolResponse as k, SchoolResponse as l };
+export type { CreateAdminRequest as C, ImportConfirmRequest as I, SchoolRequest as S, UpdateProfileRequest as U, CreateAdminResponse as a, CreateSchoolResponse as b, CsvRowWithStatus as c, ImportConfirmResponse as d, ImportCsvRequest as e, ImportCsvResponse as f, ImportPreviewRequest as g, ImportPreviewResponse as h, ImportPreviewSummary as i, ImportResultSummary as j, SchoolResponse as k, UpdateProfileResponse as l };

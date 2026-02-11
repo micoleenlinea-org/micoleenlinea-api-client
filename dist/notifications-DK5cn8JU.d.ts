@@ -34,4 +34,4 @@ interface LoadDataOptions {
 }
 type UINotificationType = 'info' | 'warning' | 'error' | 'success';
 
-export type { ApiNotificationData as A, LoadDataOptions as L, UINotificationType as U, ApiInstitutionalNewsData as a };
+export type { ApiInstitutionalNewsData as A, LoadDataOptions as L, UINotificationType as U, ApiNotificationData as a };
