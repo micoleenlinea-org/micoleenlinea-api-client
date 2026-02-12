@@ -76,7 +76,7 @@ export interface ImportPreviewResponse {
  * Request para confirmar importación
  */
 export interface ImportConfirmRequest {
-  rows: Omit<CsvRowWithStatus, '_rowIndex' | '_errors' | '_isValid'>[];
+  rows: Omit<CsvRowWithStatus, '_errors' | '_isValid'>[];
 }
 
 /**

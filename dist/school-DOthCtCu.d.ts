@@ -1,4 +1,4 @@
-import { W as UserAPIResponse, P as Province } from './student-B9T5q6Jr.mjs';
+import { W as UserAPIResponse, P as Province } from './student-B9T5q6Jr.js';
 
 interface CreateAdminRequest {
     name: string;
@@ -79,7 +79,7 @@ interface ImportPreviewResponse {
  * Request para confirmar importación
  */
 interface ImportConfirmRequest {
-    rows: Omit<CsvRowWithStatus, '_rowIndex' | '_errors' | '_isValid'>[];
+    rows: Omit<CsvRowWithStatus, '_errors' | '_isValid'>[];
 }
 /**
  * Resumen del resultado de la importación
