@@ -55,6 +55,7 @@ export interface Notification {
   status: 'sent' | 'draft' | 'scheduled';
   channel?: 'push' | 'push_email';
   createdBy?: NotificationCreatedBy | null;
+  attachments_count?: number;
 }
 
 export interface NotificationResponse {
@@ -66,6 +67,8 @@ export interface NotificationAttachment {
   id: number;
   name: string;
   filename: string;
+  mime_type?: string;
+  url?: string | null;
 }
 
 export interface HttpIndividualNotificationBase {
