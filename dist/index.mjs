@@ -784,6 +784,7 @@ var importPreviewAPIMock = async (_data) => {
       apellido: "Perez",
       fecha_nacimiento: "15/03/2015",
       curso: "1ro A",
+      dni_contacto: "20345678",
       nombre_contacto: "Maria",
       apellido_contacto: "Perez",
       email_contacto: "maria@email.com",
@@ -798,6 +799,7 @@ var importPreviewAPIMock = async (_data) => {
       apellido: "Garcia",
       fecha_nacimiento: "22/07/2016",
       curso: "1ro A",
+      dni_contacto: "21456789",
       nombre_contacto: "Pedro",
       apellido_contacto: "Garcia",
       email_contacto: "pedro@email.com",
@@ -812,12 +814,13 @@ var importPreviewAPIMock = async (_data) => {
       apellido: "Test",
       fecha_nacimiento: "01/01/2015",
       curso: "2do B",
+      dni_contacto: "123",
       nombre_contacto: "Test",
       apellido_contacto: "Contact",
       email_contacto: "invalid-email",
       telefono_contacto: "123",
       _rowIndex: 3,
-      _errors: ["DNI debe tener 7-8 d\xEDgitos num\xE9ricos", "Email inv\xE1lido", "Tel\xE9fono debe tener 10 d\xEDgitos"],
+      _errors: ["DNI debe tener 7-8 d\xEDgitos num\xE9ricos", "DNI del contacto debe tener 7-8 d\xEDgitos", "Email inv\xE1lido", "Tel\xE9fono debe tener 10 d\xEDgitos"],
       _isValid: false
     }
   ];

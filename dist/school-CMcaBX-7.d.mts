@@ -1,4 +1,4 @@
-import { W as UserAPIResponse, P as Province } from './student-B9T5q6Jr.js';
+import { W as UserAPIResponse, P as Province } from './student-B9T5q6Jr.mjs';
 
 interface CreateAdminRequest {
     name: string;
@@ -38,6 +38,7 @@ interface CsvRowWithStatus {
     apellido: string;
     fecha_nacimiento: string;
     curso: string;
+    dni_contacto: string;
     nombre_contacto: string;
     apellido_contacto: string;
     email_contacto: string;

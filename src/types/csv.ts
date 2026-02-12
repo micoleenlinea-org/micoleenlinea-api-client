@@ -31,6 +31,7 @@ export interface CsvRowWithStatus {
   apellido: string;
   fecha_nacimiento: string;
   curso: string;
+  dni_contacto: string;
   nombre_contacto: string;
   apellido_contacto: string;
   email_contacto: string;
