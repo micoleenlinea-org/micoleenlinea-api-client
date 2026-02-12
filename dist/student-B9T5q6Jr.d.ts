@@ -138,6 +138,7 @@ interface Notification {
     status: 'sent' | 'draft' | 'scheduled';
     channel?: 'push' | 'push_email';
     createdBy?: NotificationCreatedBy | null;
+    attachments_count?: number;
 }
 interface NotificationResponse {
     total: number;
@@ -147,6 +148,8 @@ interface NotificationAttachment {
     id: number;
     name: string;
     filename: string;
+    mime_type?: string;
+    url?: string | null;
 }
 interface HttpIndividualNotificationBase {
     id: number;
