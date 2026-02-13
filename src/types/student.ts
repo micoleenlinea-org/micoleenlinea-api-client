@@ -9,6 +9,7 @@ export interface Student {
   contact_phone?: string;
   contact_email?: string;
   contact_name?: string;
+  contact_dni?: number;
 }
 
 export interface StudentsResponse {
