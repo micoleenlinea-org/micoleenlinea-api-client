@@ -15,10 +15,10 @@ declare const useGetStudentsWithContactsQuery: () => _tanstack_react_query.UseQu
 
 declare const useGetProvincesQuery: () => _tanstack_react_query.UseQueryResult<GetProvincesResponse, ApiError>;
 
-declare const useGetStaff: (params?: StaffQueryParams, options?: UseQueryOptions<StaffResponse, ApiError>) => _tanstack_react_query.UseQueryResult<StaffResponse, ApiError>;
+declare const useGetStaff: (params?: StaffQueryParams, options?: Omit<UseQueryOptions<StaffResponse, ApiError>, "queryKey" | "queryFn">) => _tanstack_react_query.UseQueryResult<StaffResponse, ApiError>;
 declare const useGetStaffById: (id: number) => _tanstack_react_query.UseQueryResult<HttpIndividualStaffMember, ApiError>;
 
-declare const useGetStudents: (params?: StudentsQueryParams, options?: UseQueryOptions<StudentsResponse, ApiError>) => _tanstack_react_query.UseQueryResult<StudentsResponse, ApiError>;
+declare const useGetStudents: (params?: StudentsQueryParams, options?: Omit<UseQueryOptions<StudentsResponse, ApiError>, "queryKey" | "queryFn">) => _tanstack_react_query.UseQueryResult<StudentsResponse, ApiError>;
 declare const useGetStudentById: (id: number) => _tanstack_react_query.UseQueryResult<{
     student: HttpIndividualStudent;
     contact: HttpIndividualContact;

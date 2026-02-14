@@ -18,7 +18,7 @@ const getStaffByIdAPI = async (id: number) => {
 
 export const useGetStaff = (
   params?: StaffQueryParams,
-  options?: UseQueryOptions<StaffResponse, ApiError>
+  options?: Omit<UseQueryOptions<StaffResponse, ApiError>, 'queryKey' | 'queryFn'>
 ) => {
   const merged = { page: 1, per_page: 10, ...(params ?? {}) };
 

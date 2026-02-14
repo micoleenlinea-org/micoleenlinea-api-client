@@ -102,7 +102,7 @@ const getStudentByIdAPI = async (id: number) => {
 
 export const useGetStudents = (
   params?: StudentsQueryParams,
-  options?: UseQueryOptions<StudentsResponse, ApiError>
+  options?: Omit<UseQueryOptions<StudentsResponse, ApiError>, 'queryKey' | 'queryFn'>
 ) => {
   const merged = { page: 1, per_page: 10, ...(params ?? {}) };
 
