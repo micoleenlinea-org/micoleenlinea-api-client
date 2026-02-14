@@ -261,10 +261,11 @@ var useCompleteSignup = () => {
 import { useMutation as useMutation3 } from "@tanstack/react-query";
 var createContactAPI = async (contact) => {
   try {
-    await apiClient.post(
+    const response = await apiClient.post(
       `/students/${contact.student_id}/contacts`,
       contact
     );
+    return response.data;
   } catch (err) {
     const error = err;
     throw {
@@ -280,10 +281,23 @@ var updateContactAPI = async (params) => {
       {
         first_name: params.first_name,
         last_name: params.last_name,
+        dni: params.dni,
         email: params.email,
         phone: params.phone || ""
       }
     );
+  } catch (err) {
+    const error = err;
+    throw {
+      message: error.response?.data?.message || error.message,
+      errors: error.response?.data?.errors || {}
+    };
+  }
+};
+var createContactStandaloneAPI = async (data) => {
+  try {
+    const response = await apiClient.post("/contacts", data);
+    return response.data;
   } catch (err) {
     const error = err;
     throw {
@@ -309,6 +323,16 @@ var useUpdateContact = () => {
     },
     onError: (error) => {
       console.error("Error en actualizar contacto:", error);
+    }
+  });
+};
+var useCreateContactStandalone = () => {
+  return useMutation3({
+    mutationFn: createContactStandaloneAPI,
+    onSuccess: () => {
+    },
+    onError: (error) => {
+      console.error("Error en crear contacto standalone:", error);
     }
   });
 };
@@ -882,6 +906,7 @@ export {
   useCompleteSignup,
   useCreateAdmin,
   useCreateContact,
+  useCreateContactStandalone,
   useCreateCourse,
   useCreateNotification,
   useCreateSchool,

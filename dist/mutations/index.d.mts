@@ -1,6 +1,6 @@
 import * as _tanstack_react_query from '@tanstack/react-query';
-import { a as CreateAdminResponse, C as CreateAdminRequest, U as UpdateProfileRequest, l as UpdateProfileResponse, b as CreateSchoolResponse, S as SchoolRequest, k as SchoolResponse, d as ImportConfirmResponse, I as ImportConfirmRequest, f as ImportCsvResponse, e as ImportCsvRequest, h as ImportPreviewResponse, g as ImportPreviewRequest } from '../school-DBCqmSZg.mjs';
-import { A as ApiError, y as ResetPasswordRequest, z as ResetPasswordResponse, L as LoginRequest, o as LoginResponse, W as UserAPIResponse, Y as ValidateTokenResponse, X as ValidateTokenRequest, H as HttpIndividualContact, V as UpdateCoursePayload, e as DeleteCourseResponse, R as ResendResponse, l as HttpIndividualStaffMember, m as HttpIndividualStudent } from '../student-B9T5q6Jr.mjs';
+import { a as CreateAdminResponse, C as CreateAdminRequest, U as UpdateProfileRequest, l as UpdateProfileResponse, b as CreateSchoolResponse, S as SchoolRequest, k as SchoolResponse, d as ImportConfirmResponse, I as ImportConfirmRequest, f as ImportCsvResponse, e as ImportCsvRequest, h as ImportPreviewResponse, g as ImportPreviewRequest } from '../school-CXltgnF4.mjs';
+import { A as ApiError, B as ResetPasswordRequest, E as ResetPasswordResponse, L as LoginRequest, q as LoginResponse, Y as UserAPIResponse, _ as ValidateTokenResponse, Z as ValidateTokenRequest, e as CreateContactResponse, H as HttpIndividualContact, f as CreateContactStandaloneRequest, X as UpdateCoursePayload, g as DeleteCourseResponse, R as ResendResponse, n as HttpIndividualStaffMember, o as HttpIndividualStudent } from '../student-Bh8eaRQe.mjs';
 
 declare const resendAdminInviteAPI: (email: string) => Promise<{
     message: string;
@@ -34,11 +34,13 @@ interface UpdateContactParams {
     student_id: number;
     first_name: string;
     last_name: string;
+    dni?: number;
     email: string;
     phone?: string;
 }
-declare const useCreateContact: () => _tanstack_react_query.UseMutationResult<void, ApiError, HttpIndividualContact, unknown>;
+declare const useCreateContact: () => _tanstack_react_query.UseMutationResult<CreateContactResponse, ApiError, HttpIndividualContact, unknown>;
 declare const useUpdateContact: () => _tanstack_react_query.UseMutationResult<void, ApiError, UpdateContactParams, unknown>;
+declare const useCreateContactStandalone: () => _tanstack_react_query.UseMutationResult<CreateContactResponse, ApiError, CreateContactStandaloneRequest, unknown>;
 
 interface CreateCoursePayload {
     name: string;
@@ -125,4 +127,4 @@ declare const useImportPreview: () => _tanstack_react_query.UseMutationResult<Im
  */
 declare const useImportConfirm: () => _tanstack_react_query.UseMutationResult<ImportConfirmResponse, ApiError, ImportConfirmRequest, unknown>;
 
-export { type CourseResponse, type CreateCoursePayload, DeleteCourseResponse, type UpdateCourseMutationPayload, UpdateCoursePayload, completeSignupAPI, fetchMeAPI, forgotPasswordAPI, getMockCoursesStorage, getMockStudentsStorage, loginAPI, resendAdminInviteAPI, resetPasswordAPI, updateProfileAPI, useCompleteSignup, useCreateAdmin, useCreateContact, useCreateCourse, useCreateNotification, useCreateSchool, useCreateStaff, useCreateStudentWithContact, useDeleteCourse, useDeleteStudent, useFetchMe, useForgotPassword, useGetSchoolById, useImportConfirm, useImportCsv, useImportPreview, useLogin, useResendAdminInvite, useResendToPending, useResetPassword, useSetSchoolActive, useToggleContact, useToggleStaff, useUpdateContact, useUpdateCourse, useUpdateProfile, useUpdateStaff, useUpdateStudent, useValidateResetToken, useValidateSignupToken, validateResetTokenAPI, validateSignupTokenAPI };
+export { type CourseResponse, type CreateCoursePayload, DeleteCourseResponse, type UpdateCourseMutationPayload, UpdateCoursePayload, completeSignupAPI, fetchMeAPI, forgotPasswordAPI, getMockCoursesStorage, getMockStudentsStorage, loginAPI, resendAdminInviteAPI, resetPasswordAPI, updateProfileAPI, useCompleteSignup, useCreateAdmin, useCreateContact, useCreateContactStandalone, useCreateCourse, useCreateNotification, useCreateSchool, useCreateStaff, useCreateStudentWithContact, useDeleteCourse, useDeleteStudent, useFetchMe, useForgotPassword, useGetSchoolById, useImportConfirm, useImportCsv, useImportPreview, useLogin, useResendAdminInvite, useResendToPending, useResetPassword, useSetSchoolActive, useToggleContact, useToggleStaff, useUpdateContact, useUpdateCourse, useUpdateProfile, useUpdateStaff, useUpdateStudent, useValidateResetToken, useValidateSignupToken, validateResetTokenAPI, validateSignupTokenAPI };

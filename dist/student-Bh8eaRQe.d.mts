@@ -54,6 +54,7 @@ interface ResetPasswordResponse {
 interface HttpIndividualContact {
     first_name: string;
     last_name: string;
+    dni?: number;
     email: string;
     phone: string;
     name?: string;
@@ -62,9 +63,23 @@ interface HttpIndividualContact {
 interface StudentContact {
     id: number;
     name: string;
+    dni?: number;
     email: string;
     phone: string;
     is_active: boolean;
+}
+interface CreateContactStandaloneRequest {
+    first_name: string;
+    last_name: string;
+    dni: number;
+    email: string;
+    phone?: string;
+    student_ids: number[];
+}
+interface CreateContactResponse {
+    contact_id: number;
+    student_id?: number;
+    is_existing: boolean;
 }
 
 interface GetCourseResponse {
@@ -299,6 +314,7 @@ interface Student {
     contact_phone?: string;
     contact_email?: string;
     contact_name?: string;
+    contact_dni?: number;
 }
 interface StudentsResponse {
     current_page: number;
@@ -323,4 +339,4 @@ interface HttpIndividualStudent {
     name?: string;
 }
 
-export { type ApiError as A, type StaffMember as B, type ContactDetails as C, type DeleteCourseErrorResponse as D, type StaffQueryParams as E, type StaffResponse as F, type GetCourseResponse as G, type HttpIndividualContact as H, type InstitutionalDetails as I, type Student as J, type StudentContact as K, type LoginRequest as L, type MobileNotification as M, type Notification as N, type StudentGroupDetails as O, type Province as P, type StudentWithContactsResponse as Q, type ResendResponse as R, type SentTo as S, type StudentsQueryParams as T, type StudentsResponse as U, type UpdateCoursePayload as V, type UserAPIResponse as W, type ValidateTokenRequest as X, type ValidateTokenResponse as Y, type ContactReadStatus as a, type CourseDetails as b, type CourseReadStatus as c, type CourseWithContactsResponse as d, type DeleteCourseResponse as e, type GetProvincesResponse as f, type HttpIndividualNotification as g, type HttpIndividualNotificationBase as h, type HttpIndividualNotificationContacts as i, type HttpIndividualNotificationCourses as j, type HttpIndividualNotificationInstitutional as k, type HttpIndividualStaffMember as l, type HttpIndividualStudent as m, type InviteStatus as n, type LoginResponse as o, type MobileNotificationsResponse as p, type NotificationAttachment as q, type NotificationCreatedBy as r, type NotificationMetricsResponse as s, type NotificationParams as t, type NotificationResponse as u, type NotificationStats as v, type NotificationToCreate as w, NotificationType as x, type ResetPasswordRequest as y, type ResetPasswordResponse as z };
+export { type ApiError as A, type ResetPasswordRequest as B, type ContactDetails as C, type DeleteCourseErrorResponse as D, type ResetPasswordResponse as E, type StaffMember as F, type GetCourseResponse as G, type HttpIndividualContact as H, type InstitutionalDetails as I, type StaffQueryParams as J, type StaffResponse as K, type LoginRequest as L, type MobileNotification as M, type Notification as N, type Student as O, type Province as P, type StudentContact as Q, type ResendResponse as R, type SentTo as S, type StudentGroupDetails as T, type StudentWithContactsResponse as U, type StudentsQueryParams as V, type StudentsResponse as W, type UpdateCoursePayload as X, type UserAPIResponse as Y, type ValidateTokenRequest as Z, type ValidateTokenResponse as _, type ContactReadStatus as a, type CourseDetails as b, type CourseReadStatus as c, type CourseWithContactsResponse as d, type CreateContactResponse as e, type CreateContactStandaloneRequest as f, type DeleteCourseResponse as g, type GetProvincesResponse as h, type HttpIndividualNotification as i, type HttpIndividualNotificationBase as j, type HttpIndividualNotificationContacts as k, type HttpIndividualNotificationCourses as l, type HttpIndividualNotificationInstitutional as m, type HttpIndividualStaffMember as n, type HttpIndividualStudent as o, type InviteStatus as p, type LoginResponse as q, type MobileNotificationsResponse as r, type NotificationAttachment as s, type NotificationCreatedBy as t, type NotificationMetricsResponse as u, type NotificationParams as v, type NotificationResponse as w, type NotificationStats as x, type NotificationToCreate as y, NotificationType as z };
