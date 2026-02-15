@@ -1,6 +1,6 @@
 import * as _tanstack_react_query from '@tanstack/react-query';
-import { a as CreateAdminResponse, C as CreateAdminRequest, U as UpdateProfileRequest, l as UpdateProfileResponse, b as CreateSchoolResponse, S as SchoolRequest, k as SchoolResponse, d as ImportConfirmResponse, I as ImportConfirmRequest, f as ImportCsvResponse, e as ImportCsvRequest, h as ImportPreviewResponse, g as ImportPreviewRequest } from '../school-CXltgnF4.mjs';
-import { A as ApiError, B as ResetPasswordRequest, E as ResetPasswordResponse, L as LoginRequest, q as LoginResponse, Y as UserAPIResponse, _ as ValidateTokenResponse, Z as ValidateTokenRequest, e as CreateContactResponse, H as HttpIndividualContact, f as CreateContactStandaloneRequest, X as UpdateCoursePayload, g as DeleteCourseResponse, R as ResendResponse, n as HttpIndividualStaffMember, o as HttpIndividualStudent } from '../student-Bh8eaRQe.mjs';
+import { a as CreateAdminResponse, C as CreateAdminRequest, U as UpdateProfileRequest, l as UpdateProfileResponse, b as CreateSchoolResponse, S as SchoolRequest, k as SchoolResponse, d as ImportConfirmResponse, I as ImportConfirmRequest, f as ImportCsvResponse, e as ImportCsvRequest, h as ImportPreviewResponse, g as ImportPreviewRequest } from '../school-BBOOyjuF.mjs';
+import { A as ApiError, B as ResetPasswordRequest, E as ResetPasswordResponse, L as LoginRequest, q as LoginResponse, Z as UserAPIResponse, $ as ValidateTokenResponse, _ as ValidateTokenRequest, e as CreateContactResponse, H as HttpIndividualContact, f as CreateContactStandaloneRequest, X as UpdateCoursePayload, g as DeleteCourseResponse, R as ResendResponse, n as HttpIndividualStaffMember, o as HttpIndividualStudent, Y as UpdateStudentData } from '../student-BDhWtPNn.mjs';
 
 declare const resendAdminInviteAPI: (email: string) => Promise<{
     message: string;
@@ -111,11 +111,7 @@ declare const useCreateStudentWithContact: () => _tanstack_react_query.UseMutati
     studentData: HttpIndividualStudent;
     contactData: HttpIndividualContact;
 }, unknown>;
-declare const useUpdateStudent: () => _tanstack_react_query.UseMutationResult<void, ApiError, {
-    id: number;
-    course_id: number;
-    phone: string;
-}, unknown>;
+declare const useUpdateStudent: () => _tanstack_react_query.UseMutationResult<void, ApiError, UpdateStudentData, unknown>;
 declare const useDeleteStudent: () => _tanstack_react_query.UseMutationResult<void, ApiError, number, unknown>;
 declare const useImportCsv: () => _tanstack_react_query.UseMutationResult<ImportCsvResponse, ApiError, ImportCsvRequest, unknown>;
 /**

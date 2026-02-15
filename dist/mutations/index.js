@@ -745,16 +745,18 @@ var createStudentWithContactAPIMock = async (studentData, contactData) => {
   saveMockStudentsToStorage(students);
   console.log("\u{1F9EA} Mock: Estudiante creado:", newStudent);
 };
-var updateStudentAPIMock = async (id, course_id, phone) => {
+var updateStudentAPIMock = async (id, data) => {
   await new Promise((resolve) => setTimeout(resolve, 500));
   const students = getMockStudentsFromStorage();
   const student = students.find((s) => s.id === id);
   if (student) {
-    student.student.course_id = course_id;
-    student.contact.phone = phone;
+    if (data.course_id !== void 0) student.student.course_id = data.course_id;
+    if (data.phone !== void 0) student.contact.phone = data.phone;
+    if (data.first_name !== void 0) student.student.first_name = data.first_name;
+    if (data.last_name !== void 0) student.student.last_name = data.last_name;
     saveMockStudentsToStorage(students);
   }
-  console.log(`\u{1F9EA} Mock: Estudiante ${id} actualizado con curso ${course_id}`);
+  console.log(`\u{1F9EA} Mock: Estudiante ${id} actualizado`, data);
 };
 var deleteStudentAPIMock = async (id) => {
   await new Promise((resolve) => setTimeout(resolve, 500));
@@ -789,9 +791,9 @@ var createStudentWithContactAPI = async (studentData, contactData) => {
   if (MOCK_MODE) return createStudentWithContactAPIMock(studentData, contactData);
   await apiClient.post("/students", { student: studentData, contact: contactData });
 };
-var updateStudentAPI = async (id, course_id, phone) => {
-  if (MOCK_MODE) return updateStudentAPIMock(id, course_id, phone);
-  await apiClient.patch(`/students/${id}`, { course_id, phone });
+var updateStudentAPI = async ({ id, ...data }) => {
+  if (MOCK_MODE) return updateStudentAPIMock(id, data);
+  await apiClient.patch(`/students/${id}`, data);
 };
 var deleteStudentAPI = async (id) => {
   if (MOCK_MODE) return deleteStudentAPIMock(id);
@@ -830,7 +832,7 @@ var useCreateStudentWithContact = () => {
 };
 var useUpdateStudent = () => {
   return (0, import_react_query9.useMutation)({
-    mutationFn: ({ id, course_id, phone }) => updateStudentAPI(id, course_id, phone),
+    mutationFn: updateStudentAPI,
     onSuccess: () => {
     },
     onError: (error) => {
