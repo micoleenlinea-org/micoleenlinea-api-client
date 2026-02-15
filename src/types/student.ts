@@ -10,6 +10,7 @@ export interface Student {
   contact_email?: string;
   contact_name?: string;
   contact_dni?: number;
+  notes?: string;
 }
 
 export interface StudentsResponse {
@@ -35,4 +36,14 @@ export interface HttpIndividualStudent {
   birth_date: Date;
   course_id: number;
   name?: string;
+  notes?: string;
+}
+
+export interface UpdateStudentData {
+  id: number;
+  course_id?: number;
+  phone?: string;
+  first_name?: string;
+  last_name?: string;
+  notes?: string;
 }

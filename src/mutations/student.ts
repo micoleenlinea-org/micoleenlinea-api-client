@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { apiClient } from '../config/axios';
 import { type ApiError } from '../types/apiError';
-import { type HttpIndividualStudent } from '../types/student';
+import { type HttpIndividualStudent, type UpdateStudentData } from '../types/student';
 import { type HttpIndividualContact } from '../types/contact';
 import type {
   ImportCsvRequest,
@@ -76,17 +76,19 @@ const createStudentWithContactAPIMock = async (
   console.log('🧪 Mock: Estudiante creado:', newStudent);
 };
 
-const updateStudentAPIMock = async (id: number, course_id: number, phone: string) => {
+const updateStudentAPIMock = async (id: number, data: Omit<UpdateStudentData, 'id'>) => {
   await new Promise((resolve) => setTimeout(resolve, 500));
 
   const students = getMockStudentsFromStorage();
   const student = students.find(s => s.id === id);
   if (student) {
-    student.student.course_id = course_id;
-    student.contact.phone = phone;
+    if (data.course_id !== undefined) student.student.course_id = data.course_id;
+    if (data.phone !== undefined) student.contact.phone = data.phone;
+    if (data.first_name !== undefined) student.student.first_name = data.first_name;
+    if (data.last_name !== undefined) student.student.last_name = data.last_name;
     saveMockStudentsToStorage(students);
   }
-  console.log(`🧪 Mock: Estudiante ${id} actualizado con curso ${course_id}`);
+  console.log(`🧪 Mock: Estudiante ${id} actualizado`, data);
 };
 
 const deleteStudentAPIMock = async (id: number): Promise<void> => {
@@ -134,9 +136,9 @@ const createStudentWithContactAPI = async (
   await apiClient.post('/students', { student: studentData, contact: contactData });
 };
 
-const updateStudentAPI = async (id: number, course_id: number, phone: string) => {
-  if (MOCK_MODE) return updateStudentAPIMock(id, course_id, phone);
-  await apiClient.patch(`/students/${id}`, { course_id, phone });
+const updateStudentAPI = async ({ id, ...data }: UpdateStudentData) => {
+  if (MOCK_MODE) return updateStudentAPIMock(id, data);
+  await apiClient.patch(`/students/${id}`, data);
 };
 
 const deleteStudentAPI = async (id: number): Promise<void> => {
@@ -185,8 +187,8 @@ export const useCreateStudentWithContact = () => {
 };
 
 export const useUpdateStudent = () => {
-  return useMutation<void, ApiError, { id: number; course_id: number; phone: string }>({
-    mutationFn: ({ id, course_id, phone }) => updateStudentAPI(id, course_id, phone),
+  return useMutation<void, ApiError, UpdateStudentData>({
+    mutationFn: updateStudentAPI,
     onSuccess: () => {},
     onError: (error) => {
       console.error('Error en actualizar estudiante:', error);
