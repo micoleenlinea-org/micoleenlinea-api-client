@@ -1,8 +1,8 @@
 import * as _tanstack_react_query from '@tanstack/react-query';
 import { UseQueryOptions } from '@tanstack/react-query';
-import { G as GetCourseResponse, A as ApiError, d as CourseWithContactsResponse, i as HttpIndividualNotification, v as NotificationParams, w as NotificationResponse, u as NotificationMetricsResponse, U as StudentWithContactsResponse, h as GetProvincesResponse, J as StaffQueryParams, K as StaffResponse, n as HttpIndividualStaffMember, o as HttpIndividualStudent, H as HttpIndividualContact, Q as StudentContact, V as StudentsQueryParams, W as StudentsResponse } from '../student-BDhWtPNn.mjs';
+import { G as GetCourseResponse, A as ApiError, d as CourseWithContactsResponse, i as HttpIndividualNotification, v as NotificationParams, w as NotificationResponse, u as NotificationMetricsResponse, U as StudentWithContactsResponse, h as GetProvincesResponse, J as StaffQueryParams, K as StaffResponse, n as HttpIndividualStaffMember, o as HttpIndividualStudent, H as HttpIndividualContact, Q as StudentContact, V as StudentsQueryParams, W as StudentsResponse } from '../student-BAvo2IPA.mjs';
 import * as _tanstack_query_core from '@tanstack/query-core';
-import { G as GetDashboardSchoolsResponse, a as GetSchoolsResponse, d as SuperAdminMetricsResponse } from '../superadminDashboard-DJUB2Ye5.mjs';
+import { G as GetDashboardSchoolsResponse, a as GetSchoolsResponse, d as SuperAdminMetricsResponse } from '../superadminDashboard-BWa3ox_E.mjs';
 
 declare const useGetCoursesQuery: () => _tanstack_react_query.UseQueryResult<GetCourseResponse[], ApiError>;
 
