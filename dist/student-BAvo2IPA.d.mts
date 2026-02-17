@@ -154,6 +154,7 @@ interface Notification {
     channel?: 'push' | 'push_email';
     createdBy?: NotificationCreatedBy | null;
     attachments_count?: number;
+    has_image_attachment?: boolean;
 }
 interface NotificationResponse {
     total: number;
